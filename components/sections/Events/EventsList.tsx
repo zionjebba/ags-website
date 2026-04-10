@@ -113,23 +113,23 @@ export default function EventsList() {
       <div className="max-w-7xl mx-auto ">
         {/* Tab bar */}
         <div className="bg-white rounded-2xl sm:rounded-full px-4 py-3 flex flex-wrap gap-2 mb-8 shadow-sm">
-  {tabs.map((tab) => (
-    <button
-      key={tab}
-      onClick={() => {
-        setActiveTab(tab);
-        setPage(1);
-      }}
-      className={`text-sm font-semibold px-4 py-1.5 rounded-full transition-all ${
-        activeTab === tab
-          ? "bg-blue-500 text-white"
-          : "text-gray-500 hover:text-black bg-gray-100"
-      }`}
-    >
-      {tab}
-    </button>
-  ))}
-</div>
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => {
+                setActiveTab(tab);
+                setPage(1);
+              }}
+              className={`text-sm font-semibold px-4 py-1.5 rounded-full transition-all ${
+                activeTab === tab
+                  ? "bg-blue-500 text-white"
+                  : "text-gray-500 hover:text-black bg-gray-100"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
 
         {/* Event rows */}
         <div className="flex flex-col gap-5">

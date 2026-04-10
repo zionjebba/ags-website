@@ -7,8 +7,8 @@ import Footer from "@/components/layout/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Africa Diaspora Forum",
-  description: "Bridging diaspora capital with Africa's boldest startups",
+  title: "Association of Ghana Startups",
+  description: "Bringing together Ghanaian startups, investors, and partners to foster growth and innovation in the ecosystem. Join us for events, resources, and networking opportunities.",
 };
 
 export default function RootLayout({

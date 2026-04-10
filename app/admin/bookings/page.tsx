@@ -58,7 +58,9 @@ export default function AdminBookingsPage() {
   return (
     <div className="flex flex-col gap-6 px-4 sm:px-0">
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Bookings</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+          Bookings
+        </h1>
         <p className="text-sm text-gray-500 mt-1">
           {bookings.length} bookings · ${totalRevenue.toLocaleString()} revenue
         </p>
@@ -99,21 +101,25 @@ export default function AdminBookingsPage() {
                   {booking.event?.title}
                 </p>
               </div>
-              <span className={`px-2 py-0.5 rounded-full text-xs font-semibold whitespace-nowrap ${
-                booking.status === "confirmed"
-                  ? "bg-green-50 text-green-700"
-                  : booking.status === "cancelled"
-                    ? "bg-red-50 text-red-600"
-                    : "bg-amber-50 text-amber-700"
-              }`}>
+              <span
+                className={`px-2 py-0.5 rounded-full text-xs font-semibold whitespace-nowrap ${
+                  booking.status === "confirmed"
+                    ? "bg-green-50 text-green-700"
+                    : booking.status === "cancelled"
+                      ? "bg-red-50 text-red-600"
+                      : "bg-amber-50 text-amber-700"
+                }`}
+              >
                 {booking.status}
               </span>
             </div>
-            
+
             <div className="space-y-2 text-sm">
               <div className="flex justify-between flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
                 <span className="text-gray-500">Plan:</span>
-                <span className="text-gray-600 font-medium">{booking.plan}</span>
+                <span className="text-gray-600 font-medium">
+                  {booking.plan}
+                </span>
               </div>
               <div className="flex justify-between flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
                 <span className="text-gray-500">Amount:</span>
@@ -131,7 +137,9 @@ export default function AdminBookingsPage() {
                 <span className="text-gray-500 text-xs">Status:</span>
                 <select
                   value={booking.status}
-                  onChange={(e) => handleUpdateStatus(booking.id, e.target.value)}
+                  onChange={(e) =>
+                    handleUpdateStatus(booking.id, e.target.value)
+                  }
                   className={`px-2 py-1 rounded-full text-xs font-semibold border-0 focus:ring-1 focus:ring-gray-300 ${
                     booking.status === "confirmed"
                       ? "bg-green-50 text-green-700"
@@ -146,12 +154,8 @@ export default function AdminBookingsPage() {
                 </select>
               </div>
             </div>
-            
-            <div className="mt-4 pt-3 border-t border-gray-100">
-              <button className="text-sm text-blue-600 hover:underline font-medium w-full text-center py-1">
-                View Details
-              </button>
-            </div>
+
+           
           </div>
         ))}
       </div>
@@ -179,9 +183,7 @@ export default function AdminBookingsPage() {
               <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">
                 Date
               </th>
-              <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                Actions
-              </th>
+            
             </tr>
           </thead>
           <tbody>
@@ -203,7 +205,9 @@ export default function AdminBookingsPage() {
                 <td className="px-5 py-3">
                   <select
                     value={booking.status}
-                    onChange={(e) => handleUpdateStatus(booking.id, e.target.value)}
+                    onChange={(e) =>
+                      handleUpdateStatus(booking.id, e.target.value)
+                    }
                     className={`px-2 py-0.5 rounded-full text-xs font-semibold border-0 focus:ring-1 focus:ring-gray-300 ${
                       booking.status === "confirmed"
                         ? "bg-green-50 text-green-700"
@@ -220,11 +224,7 @@ export default function AdminBookingsPage() {
                 <td className="px-5 py-3 text-gray-500">
                   {new Date(booking.createdAt).toLocaleDateString()}
                 </td>
-                <td className="px-5 py-3">
-                  <button className="text-xs text-blue-600 hover:underline font-medium">
-                    View
-                  </button>
-                </td>
+                
               </tr>
             ))}
           </tbody>

@@ -13,14 +13,19 @@ function getTimeLeft(target: Date) {
 }
 
 export default function CountdownTimer({ targetDate }: { targetDate: string }) {
-  // Initialize state directly with the calculation
-  const [time, setTime] = useState(() => getTimeLeft(new Date(targetDate)));
+  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const interval = setInterval(
-      () => setTime(getTimeLeft(new Date(targetDate))),
-      1000,
-    );
+    // Don't run on server
+    if (typeof window === 'undefined') return;
+
+    const updateTime = () => {
+      setTime(getTimeLeft(new Date(targetDate)));
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+
     return () => clearInterval(interval);
   }, [targetDate]);
 
@@ -37,7 +42,6 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
         Cleva Summit Coming Soon:
       </p>
 
-      {/* Timer units row */}
       <div className="flex gap-1 sm:gap-2 justify-center flex-wrap">
         {units.map(({ label, value }) => (
           <div
